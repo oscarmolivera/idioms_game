@@ -50,6 +50,11 @@ group :development, :test do
   gem 'rspec-support'
 end
 
+group :production do
+  # Ruby interface to the  PostgreSQL RDBMS 
+  gem 'pg', '~> 1.2', '>= 1.2.3'
+end
+
 group :development do
   # Guard and LiveReload automatically reloads your browser when 'view' files are modified.
   gem 'guard'
