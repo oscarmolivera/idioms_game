@@ -1,0 +1,9 @@
+%h2="Index View"
+%p
+  ="We have this many word in the database"
+  =@words.count
+%table
+  -@words.each do |word|
+    %tr
+      %td= word.value
+      %td= word.language
