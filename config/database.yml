@@ -1,0 +1,14 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  host: localhost
+  database: angipl_udemy_development
+  username: <%= ENV['DATABASE_USERNAME'] %> 
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: <%= ENV['SOCKET'] %>
+test:
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  database: db/angipl_udemy_test.sqlite3  
