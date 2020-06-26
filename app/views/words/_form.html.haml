@@ -1,0 +1,7 @@
+= simple_form_for @word do |f|
+  .field-set
+    .form-group
+      = f.input :value, class: 'form-control'
+      = f.input :language, class: 'form-control'
+    .form-group
+      = f.submit :submit
