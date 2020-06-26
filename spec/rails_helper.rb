@@ -22,6 +22,7 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Warden::Test::Helpers, type: :feature
   config.include FactoryBot::Syntax::Methods
+  config.after { Rails.cache.clear } # Clear the cache after each spec
 end
 
 Shoulda::Matchers.configure do |config|
