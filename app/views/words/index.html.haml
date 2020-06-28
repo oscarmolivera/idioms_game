@@ -14,9 +14,12 @@
               Word Name
             %th
               Language
+            %th
+              Actions  
         %tbody
           -@words.each do |word|
             %tr
               %td= word.id 
               %td= word.value
               %td= word.language
+              %td= link_to('Show Word', word_path(word), class: 'btn btn-primary')
