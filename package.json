@@ -1,5 +1,5 @@
 {
-  "name": "angipl_udemy",
+  "name": "idioms_game",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",

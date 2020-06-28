@@ -9,11 +9,11 @@ default: &default
 
 development:
   <<: *default
-  database: angipl_udemy_development
+  database: idioms_game_development
 
 test:
   <<: *default
-  database: angipl_udemy_test
+  database: idioms_game_test
 
 production:
   adapter:  postgresql
