@@ -1,9 +1,22 @@
-%h2="Index View"
-%p
-  ="We have this many word in the database"
-  =@words.count
-%table
-  -@words.each do |word|
-    %tr
-      %td= word.value
-      %td= word.language
+.container-fluid
+  %h2="Index View"
+  %p
+    ="We have this many word in the database"
+    =@words.count
+  .row
+    .col-md-12
+      %table.table
+        %thead
+          %tr
+            %th
+              \#
+            %th
+              Word Name
+            %th
+              Language
+        %tbody
+          -@words.each do |word|
+            %tr
+              %td= word.id 
+              %td= word.value
+              %td= word.language
