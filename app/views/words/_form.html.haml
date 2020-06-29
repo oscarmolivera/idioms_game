@@ -2,6 +2,6 @@
   .field-set
     .form-group
       = f.input :content, label: 'Word Name', class: 'form-control'
-      = f.input :language, collection: LanguageList::COMMON_LANGUAGES.map(&:name), class: 'form-control'
+      = f.association :language, class: 'form-control'
     .form-group
       = f.submit :submit, class: 'btn btn-primary'

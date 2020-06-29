@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 2020_06_29_194255) do
   end
 
   create_table "words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "language_id"
-    t.string "content"
     t.index ["language_id"], name: "index_words_on_language_id"
   end
 
