@@ -32,7 +32,8 @@ RSpec.describe WordsController, type: :controller do
 
   describe 'POST Create' do
     context 'when valid params' do
-      let(:params) { { word: { content: 'Home', language: 'English' } } }
+      let(:language) { create(:language) }
+      let(:params) { { word: { content: 'Home', language_id: language.id } } }
       subject { post :create, params: params }
 
       it 'create a new word' do
@@ -41,7 +42,7 @@ RSpec.describe WordsController, type: :controller do
     end
 
     context 'when invalid params' do
-      let(:params) { { word: { content: '', language: :nil } } }
+      let(:params) { { word: { content: '', language_id: :nil } } }
       subject { post :create, params: params }
 
       it 'does not create a new word' do
