@@ -24,6 +24,8 @@ gem 'haml', '~> 5.1', '>= 5.1.2'
 ## gem 'image_processing', '~> 1.10', '>= 1.10.3'
 # Build JSON APIs with ease.
 gem 'jbuilder', '~> 2.7'
+# A list of languages based upon ISO-639-1
+gem 'language_list', '~> 1.2', '>= 1.2.1'
 # Use Puma as the app server.
 gem 'puma', '~> 4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'.
