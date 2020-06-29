@@ -7,7 +7,9 @@ RSpec.describe Word, type: :model do
   end
 
   describe 'validations' do
+    let(:languages) { LanguageList::COMMON_LANGUAGES.map(&:name) }
     it { is_expected.to validate_presence_of(:content) }
     it { is_expected.to validate_presence_of(:language) }
+    it { is_expected.to validate_inclusion_of(:language).in_array(languages) }
   end
 end
