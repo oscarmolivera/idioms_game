@@ -1,7 +1,7 @@
 = simple_form_for @word do |f|
   .field-set
     .form-group
-      = f.input :value, label: 'Word Name', class: 'form-control'
+      = f.input :content, label: 'Word Name', class: 'form-control'
       = f.input :language, class: 'form-control'
     .form-group
       = f.submit :submit, class: 'btn btn-primary'
