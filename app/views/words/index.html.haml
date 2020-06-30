@@ -22,4 +22,7 @@
               %td= word.id 
               %td= word.content
               %td= word.language.name
-              %td= link_to('Show Word', word_path(word), class: 'btn btn-primary')
+              %td
+                = link_to('Show Word', word_path(word), class: 'btn btn-primary')
+                = link_to('Edit Word', edit_word_path(word), class: 'btn btn-primary')
+                
