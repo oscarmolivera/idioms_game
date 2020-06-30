@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :words, only: %i[index new create show]
+  resources :words
   root 'words#index'
 end
