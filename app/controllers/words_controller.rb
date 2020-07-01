@@ -1,5 +1,6 @@
 class WordsController < ApplicationController
-  before_action :set_word, only: %i[edit show update]
+  skip_before_action :verify_authenticity_token, only: :destroy
+  before_action :set_word, only: %i[edit show update destroy]
 
   def index
     @words = Word.all
@@ -28,6 +29,11 @@ class WordsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @word.destroy
+    redirect_to @word
   end
 
   private
