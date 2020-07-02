@@ -6,3 +6,6 @@
     import 'bootstrap';
     import './stylesheets/application.scss';
     global.$ = jQuery;
+
+    const toastr = require("toastr");
+    window.toastr = toastr;
