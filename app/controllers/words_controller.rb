@@ -1,6 +1,7 @@
 class WordsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :destroy
   before_action :set_word, only: %i[edit show update destroy]
+  before_action :authenticate_user!, only: %i[new create edit destroy]
 
   def index
     @words = Word.all
