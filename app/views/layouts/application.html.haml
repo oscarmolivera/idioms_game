@@ -14,5 +14,6 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .container
+      = toastr_flash_messages
       = render 'shared/navegation'
       = yield

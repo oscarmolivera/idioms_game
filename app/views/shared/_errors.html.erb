@@ -1,0 +1,7 @@
+<% unless object.errors.empty? %>
+    <script type="text/javascript">
+        <% object.errors.full_messages.each do |msg| %>
+            toastr.error('<%= msg %>', 'Error', {closeButton:false, progressBar: true})
+        <% end %>
+    </script>
+<% end %>
