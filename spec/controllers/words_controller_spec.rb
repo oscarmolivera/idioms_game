@@ -146,6 +146,8 @@ RSpec.describe WordsController, type: :controller do
     let(:language2) { create(:language) }
 
     context 'when user is logged in' do 
+      login_user
+      
       context 'and params are correct' do
         let(:params) { { id: word.id, word: { content: 'House', language_id: language2.id } } }
         subject {put :update, params: params}
@@ -180,7 +182,15 @@ RSpec.describe WordsController, type: :controller do
         end
       end
     end
-    
+
+    context 'when user is not logged in' do
+      let(:params) { { id: word.id, word: { content: 'House', language_id: language2.id } } }
+      subject {put :update, params: params}
+      
+      it 'will not update the content' do
+        expect { subject }.not_to change { word.reload.content }
+      end
+    end
   end
 
   describe 'DELETE destroy' do
