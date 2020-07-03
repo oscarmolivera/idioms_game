@@ -26,6 +26,8 @@ gem 'haml', '~> 5.1', '>= 5.1.2'
 gem 'jbuilder', '~> 2.7'
 # Use Puma as the app server.
 gem 'puma', '~> 4.1'
+# Object oriented authorization for Rails applications
+gem 'pundit', '~> 2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'.
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Simple Form a flexible way to create your forms.
