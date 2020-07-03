@@ -7,7 +7,9 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 
 require 'devise'
+require 'pundit/rspec'
 require_relative 'support/controller_macros'
+require_relative 'support/pundit_matchers'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
