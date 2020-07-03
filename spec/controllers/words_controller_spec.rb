@@ -19,14 +19,18 @@ RSpec.describe WordsController, type: :controller do
   end
 
   describe 'GET New' do
+    
     before { get :new }
+    login_user
 
-    it 'assigns @word' do
-      expect(assigns(:word)).to be_a_new(Word)
-    end
-
-    it 'renders the new template' do
-      expect(response).to render_template(:new)
+    context 'when user is logged in' do  
+      it 'assigns @word' do
+        expect(assigns(:word)).to be_a_new(Word)
+      end
+  
+      it 'renders the new template' do
+        expect(response).to render_template(:new)
+      end
     end
   end
 
