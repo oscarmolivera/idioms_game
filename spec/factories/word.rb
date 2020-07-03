@@ -4,5 +4,6 @@ FactoryBot.define do
   factory :word do |w|
     w.content { 'Home' }
     language
+    user
   end
 end
