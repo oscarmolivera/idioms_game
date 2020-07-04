@@ -64,6 +64,12 @@ group :production do
 end
 
 group :development do
+  # Detects security vulnerabilities via static analysis.
+  gem 'brakeman', '~> 4.8', '>= 4.8.2'
+  # help to kill N+1 queries and unused eager loading.
+  gem 'bullet', '~> 6.1'
+  # Patch-level verification for Bundled apps.
+  gem 'bundler-audit', '~> 0.7.0.1'
   # Guard and LiveReload automatically reloads your browser when 'view' files are modified.
   gem 'guard'
   gem 'guard-livereload', '~> 2.5', require: false
