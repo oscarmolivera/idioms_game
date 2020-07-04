@@ -24,6 +24,8 @@ gem 'haml', '~> 5.1', '>= 5.1.2'
 ## gem 'image_processing', '~> 1.10', '>= 1.10.3'
 # Build JSON APIs with ease.
 gem 'jbuilder', '~> 2.7'
+# A sophisticated paginator for Rails 4+
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
 # Use Puma as the app server.
 gem 'puma', '~> 4.1'
 # Object oriented authorization for Rails applications
