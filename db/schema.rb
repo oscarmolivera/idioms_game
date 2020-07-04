@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_161449) do
+ActiveRecord::Schema.define(version: 2020_07_04_202752) do
 
   create_table "languages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "translations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "translated_word_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["translated_word_id"], name: "index_translations_on_translated_word_id"
+    t.index ["word_id"], name: "index_translations_on_word_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -40,6 +49,8 @@ ActiveRecord::Schema.define(version: 2020_07_03_161449) do
     t.index ["user_id"], name: "index_words_on_user_id"
   end
 
+  add_foreign_key "translations", "words"
+  add_foreign_key "translations", "words", column: "translated_word_id"
   add_foreign_key "words", "languages"
   add_foreign_key "words", "users"
 end
