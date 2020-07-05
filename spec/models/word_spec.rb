@@ -13,6 +13,31 @@ RSpec.describe Word, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:content) }
     it { is_expected.to validate_presence_of(:language) }
+
+    describe '#word_translations' do
+      let(:english) { create(:language) }
+      let(:word_english) { build(:word, language: english) }
+      
+      context 'when word translation is in same language' do
+        let(:word_english2) { build(:word, language: english) }
+
+        before { word_english.translations = [word_english2] }
+
+        it 'denies to save the translation' do
+          expect(word_english).not_to be_valid  
+        end
+      end
+
+      context 'when word translation is in different language' do
+        let(:spanish) { create(:language, :spanish) }
+        let(:word_spanish) { build(:word, language: spanish) }
+        before { word_english.translations = [word_spanish] }
+        
+        it 'allows to save the translation' do
+          expect(word_english).to be_valid
+        end
+      end
+    end
   end
 
   describe 'associations' do
