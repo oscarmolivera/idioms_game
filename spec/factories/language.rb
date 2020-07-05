@@ -7,6 +7,8 @@ FactoryBot.define do
       "#{n}#{Faker::Verb.base.capitalize}"
     end
 
-    #l.name {generate :name}
+    trait :spanish do
+      name { 'Español' }
+    end
   end
 end
