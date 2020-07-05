@@ -24,6 +24,8 @@ gem 'haml', '~> 5.1', '>= 5.1.2'
 ## gem 'image_processing', '~> 1.10', '>= 1.10.3'
 # Build JSON APIs with ease.
 gem 'jbuilder', '~> 2.7'
+# Handle multiple models in a single form.
+gem 'nested_form', '~> 0.3.2'
 # Agnostic pagination in plain ruby
 gem 'pagy', '~> 3.8', '>= 3.8.2'
 # Use Puma as the app server.
@@ -48,6 +50,8 @@ gem 'will_paginate', '~> 3.3'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console.
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # Runtime developer console and IRB alternative
+  gem 'pry-rails', '~> 0.3.9'
   # A testing framework for Rails 5+.
   gem 'rspec-core'
   gem 'rspec-expectations'
