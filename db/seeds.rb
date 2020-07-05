@@ -31,4 +31,12 @@ puts '8 Dummy Languages created!'
     user_id: Faker::Number.between(from: 1, to: 5)
   )
 end
-puts '25 Words Created!'
+puts '50 Words Created!'
+
+25.times do
+  Translation.create!(
+    word_id: Faker::Number.between(from: 1, to: 50),
+    translated_word_id: Faker::Number.between(from: 1, to: 50)
+  )
+end
+puts '25 Translations Created!'
