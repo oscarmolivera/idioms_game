@@ -16,8 +16,7 @@ RSpec.describe Word, type: :model do
     it { is_expected.to belong_to(:user) }
 
     it do
-      is_expected.to have_many(:translations_association)
-        .class_name('Translation')
+      is_expected.to have_many(:translations_association).class_name('Translation')
     end
     it do
       is_expected.to have_many(:translations)
