@@ -6,6 +6,10 @@ RSpec.describe Word, type: :model do
     it { is_expected.to have_db_column(:language_id) }
   end
 
+  describe 'nested forms' do
+    it { is_expected.to accept_nested_attributes_for(:translations) }
+  end
+
   describe 'validations' do
     it { is_expected.to validate_presence_of(:content) }
     it { is_expected.to validate_presence_of(:language) }
