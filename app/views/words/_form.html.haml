@@ -1,7 +1,14 @@
-= simple_form_for @word do |f|
+= simple_nested_form_for @word do |f|
   .field-set
     .form-group
       = f.input :content, label: 'Word Name', class: 'form-control'
       = f.association :language, class: 'form-control'
+      %h3 Translations
+      = f.fields_for :translations do |tr|
+        .form-group 
+          = tr.input :content
+          = tr.association :language
+        =tr.link_to_remove('Remove this translation')
+      %p= f.link_to_add('Add a new translation', :translations)   
     .form-group
       = f.submit :submit, class: 'btn btn-primary'
