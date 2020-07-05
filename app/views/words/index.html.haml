@@ -15,7 +15,9 @@
             %th
               Language
             %th
-              User  
+              User 
+            %th
+              = '# Translation'
             %th
               Actions  
         %tbody
@@ -25,6 +27,7 @@
               %td= word.content
               %td= word.language.name
               %td= word.user&.email
+              %td= word.translations.size
               %td
                 = link_to('Show Word', word_path(word), class: 'btn btn-primary')
                 = link_to('Edit Word', edit_word_path(word), class: 'btn btn-success')
