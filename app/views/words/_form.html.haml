@@ -8,7 +8,7 @@
         .form-group 
           = tr.input :content
           = tr.association :language
-        =tr.link_to_remove('Remove this translation')
-      %p= f.link_to_add('Add a new translation', :translations)   
+        =tr.link_to_remove('Remove this translation', class: 'btn btn-danger mb-2')
+      %p= f.link_to_add('Add a new translation', :translations, class: 'btn btn-success')   
     .form-group
-      = f.submit :submit, class: 'btn btn-primary'
+      = f.submit 'Submit', class: 'btn btn-primary btn-block'
