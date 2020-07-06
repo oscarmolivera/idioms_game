@@ -3,6 +3,7 @@
     require("@rails/activestorage").start()
     require("channels")
     require("packs/nested_form") 
+    require("packs/trascia_navbar") 
     
     import 'bootstrap';
     import './stylesheets/application.scss';
