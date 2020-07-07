@@ -9,6 +9,10 @@
           = tr.input :content
           = tr.association :language
         =tr.link_to_remove('Remove this translation', class: 'btn btn-danger mb-2')
-      %p= f.link_to_add('Add a new translation', :translations, class: 'btn btn-success')   
+      %p= f.link_to_add('Add a new translation', :translations, class: 'btn btn-success')    
+      
     .form-group
-      = f.submit 'Submit', class: 'btn btn-primary btn-block'
+      = f.submit 'Submit', class: 'btn btn-primary btn-block btn-lg'   
+    .form-group.float-right
+      = link_to 'Cancel', words_path, type: 'button', class: 'btn btn-danger '
+                         
