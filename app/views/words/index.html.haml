@@ -26,7 +26,7 @@
               %td= word.id 
               %td= word.content
               %td= word.language.name
-              %td= word.user&.email
+              %td= word.usermail
               %td= word.translations.size
               %td
                 = link_to('Show Word', word_path(word), class: 'btn btn-primary')

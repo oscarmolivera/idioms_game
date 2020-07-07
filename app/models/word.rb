@@ -12,6 +12,10 @@ class Word < ApplicationRecord
 
   accepts_nested_attributes_for :translations
 
+  def usermail
+    user.email.gsub(/.{0,3}@/, '***@').split('@').first
+  end
+
   private
 
   # Validates that a word language can not be the same as the translation language.
