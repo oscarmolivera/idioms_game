@@ -7,7 +7,8 @@ RSpec.describe Word, type: :model do
   end
 
   describe 'nested forms' do
-    it { is_expected.to accept_nested_attributes_for(:translations) }
+    it { is_expected.to accept_nested_attributes_for(:translations).allow_destroy(true) }
+    
   end
 
   describe 'validations' do

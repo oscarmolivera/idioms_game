@@ -10,7 +10,7 @@ class Word < ApplicationRecord
   validates :content, :language, presence: true
   validate :word_translations
 
-  accepts_nested_attributes_for :translations
+  accepts_nested_attributes_for :translations, allow_destroy: true
 
   def usermail
     user.email.gsub(/.{0,3}@/, '***@').split('@').first
