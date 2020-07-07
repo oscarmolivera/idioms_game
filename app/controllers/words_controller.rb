@@ -15,9 +15,7 @@ class WordsController < ApplicationController
   def create
     @word = Word.new(word_params)
     @word.user_id = current_user.id
-    @word.translations.each do |wt|
-      wt.user = current_user
-    end
+    user_for_translations(@word)
     if @word.save
       redirect_to(words_path)
     else
@@ -30,8 +28,10 @@ class WordsController < ApplicationController
   def show; end
 
   def update
-    if @word.update(word_params)
-      redirect_to words_path
+    @word.assign_attributes(word_params)
+    user_for_translations(@word)
+    if @word.save
+      redirect_to(word_path(@word))
     else
       render :edit
     end
@@ -60,4 +60,11 @@ class WordsController < ApplicationController
   def authorize_user!
     authorize @word
   end
+
+  def user_for_translations(word)
+    word.translations.each do |translation|
+      translation.user = current_user
+    end
+  end
+
 end
