@@ -63,4 +63,19 @@ RSpec.describe Word, type: :model do
         .source(:word)
     end
   end
+
+  describe '#usermail' do
+    let(:user) { build(:user, email: 'testsubject@email.com') }
+    let(:word) { create(:word, user: user)}
+    
+    # Dos pruebas iguales  con diferentes codigos.
+    subject { word.usermail }
+    
+    it { is_expected.to eq('testsubj***') }
+
+    it 'mask the user mail' do
+      subject
+      expect(word.usermail).to eq('testsubj***')
+    end
+  end
 end
