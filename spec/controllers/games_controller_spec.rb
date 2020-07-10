@@ -36,4 +36,43 @@ RSpec.describe GamesController, type: :controller do
       end      
     end
   end
+
+  describe 'Get #show' do
+    context 'when user is signed in,' do
+      let(:user) { create(:user) }
+      let(:game) { create(:game) }
+      subject { get :show, params: {id: game.id}}
+      before do
+        sign_in(user)
+        subject
+      end
+
+      it 'assigns @game' do
+        expect(assigns(:game)).to eq(game)
+      end
+
+      it 'renders the show template' do
+        expect(response).to render_template(:show)
+      end
+    end
+
+    context 'when user is not signed in' do
+      let(:game) { create(:game) }
+      subject { get :show, params: {id: game.id}}
+
+      before { subject }
+
+      it 'does not assigns @game' do
+        expect(assigns(:game)).not_to eq(game)
+      end
+
+      it 'redirect to login page' do
+        expect(subject).to redirect_to("/users/sign_in")
+      end
+
+      it 'does not render the new template' do
+        expect(response).not_to render_template(:show)
+      end
+    end
+  end
 end
