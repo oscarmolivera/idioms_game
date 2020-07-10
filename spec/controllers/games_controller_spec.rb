@@ -40,8 +40,8 @@ RSpec.describe GamesController, type: :controller do
   describe 'Get #show' do
     context 'when user is signed in,' do
       let(:user) { create(:user) }
-      let(:game) { create(:game) }
-      subject { get :show, params: {id: game.id}}
+      let(:game) { create(:game, user: user) }
+      subject { get :show, params: { id: game.id } }
       before do
         sign_in(user)
         subject
@@ -52,7 +52,10 @@ RSpec.describe GamesController, type: :controller do
       end
 
       it 'renders the show template' do
-        expect(response).to render_template(:show)
+        expect(response.status).to eq(200)
+        expect(response).to render_template(:show) 
+        #expect(response.body).to match /Game/
+        #expect(response.body).to be_success
       end
     end
 
