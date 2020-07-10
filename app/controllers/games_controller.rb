@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
-  before_action :authenticate_user!, only: %i[show]
+  before_action :authenticate_user!, only: %i[show create]
   before_action :set_game, only: %i[show]
 
   def create
