@@ -6,13 +6,19 @@ User.create!(
   password_confirmation: '123456'
 )
 puts 'My User created!'
+User.create!(
+  email: 'ederson@smtm.co',
+  password: 'smtm1234',
+  password_confirmation: 'smtm1234'
+)
+puts 'Ederson TestUser!'
 
 4.times do
   pass = Faker::Internet.password(min_length: 8)
   User.create!(
     email: Faker::Internet.email,
     password: pass,
-    password_confirmation: pass,
+    password_confirmation: pass
   )
 end
 puts '4 Dummy users created!'
