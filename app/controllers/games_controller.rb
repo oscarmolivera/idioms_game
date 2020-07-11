@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @word = Word.order(Arel.sql('RAND()')).first
+    @word = Words::RandomWord.new.call
   end
 
   private
