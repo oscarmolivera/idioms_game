@@ -6,5 +6,11 @@ FactoryBot.define do
     w.content { Faker::Lorem.word }
     language
     user
+
+    trait :with_translations do
+      after(:create) do |word|
+        word.translations << (create_list :word, 5)
+      end
+    end
   end
 end
