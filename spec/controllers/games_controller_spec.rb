@@ -57,6 +57,13 @@ RSpec.describe GamesController, type: :controller do
         #expect(response.body).to match /Game/
         #expect(response.body).to be_success
       end
+
+      it "denies access other user's game" do
+        game2 = FactoryBot.create(:game, user: FactoryBot.create(:user))
+        get :show, params: { id: game2.id }
+        expect(response).to have_http_status(302)
+        expect(subject).to redirect_to(root_path)
+      end
     end
 
     context 'when user is not signed in' do
@@ -77,5 +84,7 @@ RSpec.describe GamesController, type: :controller do
         expect(response).not_to render_template(:show)
       end
     end
+
+    
   end
 end
