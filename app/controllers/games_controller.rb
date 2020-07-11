@@ -9,7 +9,9 @@ class GamesController < ApplicationController
     redirect_to(game)
   end
 
-  def show; end
+  def show
+    @word = Word.order(Arel.sql('RAND()')).first
+  end
 
   private
 
