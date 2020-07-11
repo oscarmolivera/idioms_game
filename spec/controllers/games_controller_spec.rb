@@ -38,7 +38,9 @@ RSpec.describe GamesController, type: :controller do
   end
 
   describe 'Get #show' do
+    let!(:word) { create(:word) }
     context 'when user is signed in,' do
+
       let(:user) { create(:user) }
       let(:game) { create(:game, user: user) }
       subject { get :show, params: { id: game.id } }
@@ -51,11 +53,13 @@ RSpec.describe GamesController, type: :controller do
         expect(assigns(:game)).to eq(game)
       end
 
+      it 'assigns @word' do
+        expect(assigns(:word)).to eq(word)
+      end
+
       it 'renders the show template' do
         expect(response.status).to eq(200)
         expect(response).to render_template(:show) 
-        #expect(response.body).to match /Game/
-        #expect(response.body).to be_success
       end
 
       it "denies access other user's game" do
@@ -64,6 +68,13 @@ RSpec.describe GamesController, type: :controller do
         expect(response).to have_http_status(302)
         expect(subject).to redirect_to(root_path)
       end
+      
+      # -- Examples
+      # let(:fromDate) { "26/05/2015" }
+      # let(:toDate) { "30/05/2015" }
+      # expect(response.body).to include(fromDate, toDate)      
+      #expect(response.body).to match /Game/
+      #expect(response.body).to be_success
     end
 
     context 'when user is not signed in' do
@@ -84,7 +95,5 @@ RSpec.describe GamesController, type: :controller do
         expect(response).not_to render_template(:show)
       end
     end
-
-    
   end
 end
