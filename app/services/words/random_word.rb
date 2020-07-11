@@ -7,7 +7,7 @@ module Words
     private
 
     def random_word
-      Word.order(Arel.sql('RAND()')).first
+      Word.joins(:translations).order(Arel.sql('RAND()')).first
     end
   end
 end
