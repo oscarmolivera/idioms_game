@@ -38,12 +38,15 @@ RSpec.describe GamesController, type: :controller do
   end
 
   describe 'Get #show' do
+  
     let!(:word) { create(:word) }
+    
     context 'when user is signed in,' do
-
       let(:user) { create(:user) }
       let(:game) { create(:game, user: user) }
+      
       subject { get :show, params: { id: game.id } }
+      
       before do
         sign_in(user)
         subject
@@ -79,12 +82,17 @@ RSpec.describe GamesController, type: :controller do
 
     context 'when user is not signed in' do
       let(:game) { create(:game) }
+      
       subject { get :show, params: {id: game.id}}
 
       before { subject }
 
       it 'does not assigns @game' do
         expect(assigns(:game)).not_to eq(game)
+      end
+
+      it 'does not assigns @word' do
+        expect(assigns(:word)).not_to eq(word)
       end
 
       it 'redirect to login page' do
