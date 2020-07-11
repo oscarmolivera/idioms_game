@@ -39,7 +39,7 @@ RSpec.describe GamesController, type: :controller do
 
   describe 'Get #show' do
   
-    let!(:word) { create(:word) }
+    let!(:word) { create(:word, :with_translations) }
     
     context 'when user is signed in,' do
       let(:user) { create(:user) }
