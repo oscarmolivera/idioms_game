@@ -5,7 +5,7 @@ describe 'Words routes' do
     expect(get: words_path).to route_to('words#index')
   end
 
-  it 'should route to words SHOW' do
+  it 'should route to words SHOW', type: :routing do
     expect(get: word_path(id: '1')).to route_to('words#show', id: '1')
   end
 

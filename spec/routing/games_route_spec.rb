@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Games routes' do
+describe 'Games routes', type: :routing do
   it 'should route to words INDEX' do
     expect(get: games_path).to route_to('games#index')
   end
