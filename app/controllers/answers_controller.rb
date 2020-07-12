@@ -3,8 +3,7 @@ class AnswersController < ApplicationController
 
   def create
     checker = Words::CheckAnswer.new(word, answer, game).call
-    redirect_back(fallback_location: game_path(game), notice: 'That is Correct!') if checker
-    redirect_back(fallback_location: game_path(game), alert: 'Sorry, Try Again!') unless checker
+    redirection(checker)
   end
 
   def game
@@ -19,9 +18,11 @@ class AnswersController < ApplicationController
     params[:answer][:content]
   end
 
-  def message(checker)
-    return 'Good answer' if checker == true
+  private
 
-    'Bad answer'
+  def redirection(checker)
+    return redirect_back(fallback_location: game_path(game), notice: t('game.good_answer')) if checker
+
+    redirect_back(fallback_location: game_path(game), alert: t('game.bad_answer'))
   end
 end
