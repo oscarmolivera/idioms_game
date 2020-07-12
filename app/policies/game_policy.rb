@@ -10,6 +10,10 @@ class GamePolicy
     authorized_user?
   end
 
+  def create?
+    authorized_user?
+  end
+
   private
 
   def authorized_user?
