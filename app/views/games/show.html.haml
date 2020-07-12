@@ -5,3 +5,9 @@
   = "Bad Answers: #{@game.bad_answers_count}" 
 %p
   = @word.content
+%p
+  = simple_form_for :answer, url: answers_path, method: :post do |f|
+    = f.input :content, as: :string
+    = f.input :game, as: :hidden, input_html: { value: @game.id }
+    = f.input :word, as: :hidden, input_html: { value: @word.id }
+    = f.button :submit, 'Check Answer', class: "btn-primary"
