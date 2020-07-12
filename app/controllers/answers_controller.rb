@@ -7,11 +7,11 @@ class AnswersController < ApplicationController
   end
 
   def game
-    Game.find(params[:answer][:game])
+    Game.find(params[:answer][:game_id])
   end
 
   def word
-    Word.find(params[:answer][:word])
+    Word.find(params[:answer][:word_id])
   end
 
   def answer

@@ -3,16 +3,17 @@ require 'rails_helper'
 RSpec.describe AnswersController, type: :controller do
 
   describe 'Post #create' do
+    subject { post :create, params: params }
     let(:user) { create(:user) }
-    let(:game) { create(:game) }
-    let(:word) { create(:word, :with_translations, user: user) }
-    let(:answer) { word.translations.first }
+    let(:game) { create(:game, user: user) }
+    let(:word) { create(:word, :with_translations) }
+    let(:answer) { word.translations.first.to_s }
     let(:params) do
       {
         answer:{
           content: answer,
-          game: game, 
-          word: word
+          game_id: game.id, 
+          word_id: word.id
         }
       }
     end
@@ -20,10 +21,15 @@ RSpec.describe AnswersController, type: :controller do
     context 'where user is sign in' do
       before do
         sign_in(user)
-        post :create, params: params
       end
 
-      it 'renders the show template' do
+      it 'call service to chacj answer' do
+        expect(Words::CheckAnswer).to receive(:new).with(word, answer, game).and_call_original
+        subject 
+      end
+
+      it 'redirect to show page' do
+        subject
         expect(response.status).to eq(302)
         expect(response).to redirect_to(game_path(game)) 
       end
