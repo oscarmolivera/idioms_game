@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe AnswersController, type: :controller do
 
   describe 'Post #create' do
-    subject { post :create, params: params }
+    subject { post :create, xhr: true, params: params }
     let(:user) { create(:user) }
     let(:game) { create(:game, user: user) }
     let(:word) { create(:word, :with_translations) }
@@ -23,27 +23,22 @@ RSpec.describe AnswersController, type: :controller do
         sign_in(user)
       end
 
-      it 'call service to chacj answer' do
+      it 'call service to check answer' do
         expect(Words::CheckAnswer).to receive(:new).with(word, answer, game).and_call_original
         subject 
       end
 
       it 'redirect to show page' do
         subject
-        expect(response.status).to eq(302)
-        expect(response).to redirect_to(game_path(game)) 
+        expect(response.status).to eq(200)
       end
     end
 
     context 'where user is not sign in' do
-        before { post :create, params: params }
+        before { subject }
 
-        it 'redirect to login page' do
-          expect(subject).to redirect_to("/users/sign_in")
-        end
-
-        it 'the page show is :found but redirected' do
-          expect(response).to have_http_status(302)
+        it 'return an Unauthorized Action' do
+          expect(response).to have_http_status(401)
         end 
     end
 
