@@ -13,7 +13,8 @@
           = active_link_to "Create New Word", new_word_path, class: 'nav-link'
         -if current_user.games.exists?  
           %li.nav-item
-            = active_link_to "Continue Game", games_path(current_user.games.last), class: 'nav-link'
+            - game = current_user.games.last.id
+            = active_link_to "Continue Game", game_path(game), class: 'nav-link'
         -else
           %li.nav-item
             = active_link_to "Start Game", games_path, method: :post, class: 'nav-link'
