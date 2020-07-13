@@ -9,7 +9,8 @@ class WordsController < ApplicationController
   end
 
   def new
-    @word = Word.new
+    @word = current_user.words.new
+    @word.translations.new
   end
 
   def create
