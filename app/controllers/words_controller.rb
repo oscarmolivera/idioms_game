@@ -5,7 +5,7 @@ class WordsController < ApplicationController
   before_action :authorize_user!, only: %i[edit update destroy]
 
   def index
-    @pagy,  @words = pagy(Word.all, page: params[:page], items: 8)
+    @pagy,  @words = pagy(Word.includes(:user, :language, :translations), page: params[:page], items: 8)
   end
 
   def new
