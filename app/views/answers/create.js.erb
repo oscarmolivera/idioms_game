@@ -1,0 +1,8 @@
+<% if @checker == true %>
+  $('#answer_content').addClass('bg-success');
+  toastr.success('That is correct!', 'Congrats', {closeButton:true});
+<% else %>
+  $('#answer_content').addClass('bg-danger');
+  toastr.error('Nop, try again.', 'Fail', {closeButton:true});
+<% end %>
+setTimeout(function(){ location.reload(); }, 900);
