@@ -11,8 +11,12 @@
           = active_link_to "Home", root_path, class: 'nav-link' 
         %li.nav-item
           = active_link_to "Create New Word", new_word_path, class: 'nav-link'
-        %li.nav-item
-          = active_link_to "Start Game", games_path, method: :post, class: 'nav-link'          
+        -if current_user.games.exists?  
+          %li.nav-item
+            = active_link_to "Continue Game", games_path(current_user.games.last), class: 'nav-link'
+        -else
+          %li.nav-item
+            = active_link_to "Start Game", games_path, method: :post, class: 'nav-link'
   .navbar-collapse.collapse.w-15.order-3.dual-collapse2
     %ul.navbar-nav.ml-auto
       -if current_user
