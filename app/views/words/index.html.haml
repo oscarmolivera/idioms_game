@@ -30,6 +30,8 @@
               %td= word.translations.size
               %td
                 = link_to('Show Word', word_path(word), class: 'btn btn-primary')
-                = link_to('Edit Word', edit_word_path(word), class: 'btn btn-success')
-                = link_to('Delete Word', word_path(word), method: :delete, class: 'btn btn-danger')
+                - if policy(word).edit?
+                  = link_to('Edit Word', edit_word_path(word), class: 'btn btn-success')
+                - if policy(word).destroy?
+                  = link_to('Delete Word', word_path(word), method: :delete, class: 'btn btn-danger')
       = pagy_bootstrap_nav(@pagy).html_safe
