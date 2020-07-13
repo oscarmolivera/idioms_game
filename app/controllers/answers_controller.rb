@@ -1,10 +1,11 @@
 class AnswersController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create
   before_action :authenticate_user!, only: %i[create]
   before_action :authorize_user!, only: %i[create]
 
   def create
-    checker = Words::CheckAnswer.new(word, answer, game).call
-    redirection(checker)
+    @checker = Words::CheckAnswer.new(word, answer, game).call
+    respond_to { |format| format.js {} }
   end
 
   def game
@@ -21,12 +22,7 @@ class AnswersController < ApplicationController
 
   private
 
-  def redirection(checker)
-    return redirect_back(fallback_location: game_path(game), notice: t('game.good_answer')) if checker
-
-    redirect_back(fallback_location: game_path(game), alert: t('game.bad_answer'))
-  end
-
+  
   def authorize_user!
     authorize game
   end
