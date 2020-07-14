@@ -23,7 +23,7 @@
         %tbody
           -@words.each do |word|
             %tr
-              %td= word.id 
+              %td= word.id.exists? 
               %td= word.content
               %td= word.language.name
               %td= word.usermail
